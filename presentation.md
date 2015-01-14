@@ -22,10 +22,9 @@ title: Evolving your own music
 * See above reason
 
 ---
-## A small confession
+## Listen in
 
-* Only makes really ominous music
-* Obviously what I meant to do
+* Sample tracks: [1](https://s3.amazonaws.com/presentation-files/d5bcbeeb-7bca-446a-b5dd-c85bbb2918a8.ogg) [2](https://s3.amazonaws.com/presentation-files/7a5b8454-2e1c-4b4a-b622-966e85d713e5.ogg)
 
 ---
 ## A look at midi
@@ -160,3 +159,41 @@ $$\begin{bmatrix}
 ## End up with a matrix
 
 * 154 features in all
+* Concatenate vectors, get matrix
+
+---
+## Scoring songs
+
+* Compare generated song with existing songs
+* Used random forest at one point to predict
+* Simpler to use cosine distance
+* Lower distance is better
+
+---
+## Semi-genetic algorithm
+
+* Create candidate songs
+* Score them all
+* Pick the best ones, and keep them
+* Remix songs by swapping tracks
+* Generate some new songs
+
+---
+## Generations
+
+* Evolve multiple generations
+* Try to minimize distance from existing songs
+* Algorithm finds local minimum quickly
+* More than 3 generations gets duplicate "best" song
+
+---
+## More songs
+
+* Samples
+
+---
+## Open source
+
+* Available at https://github.com/VikParuchuri/evolve-music2
+* This presentation available at: https://github.com/VikParuchuri/pydataboston2015
+* Want to learn how to do things like this?  Check out www.dataquest.io!
