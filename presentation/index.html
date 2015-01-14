@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Evolving your own music</title>
+    <link href="css/reset.css" rel="stylesheet" />
+    <meta name="author" content="Vik Paruchuri">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="shortcut icon" href="css/favicon.png" />
+    <link rel="apple-touch-icon" href="css/apple-touch-icon.png" />
+    <!-- Code Prettifier: -->
+<link href="css/highlight.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\(','\)']]}});
+        </script>
+        <script type="text/javascript"
+          src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        </script>
+      
+    <link href="css/style.css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,800italic,300,400,800' rel='stylesheet' type='text/css'>    
+
+
+  </head>
+
+  <body>
+  <div class="fallback-message">
+  <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+  <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+  </div>
+    <div id="impress">
+    <div class='step' >
+    
+<h1>Evolving your own music for fun and no profit</h1>
+
+<h2>Vik Paruchuri</h2>
+
+<h2>DataQuest (<a href="http://www.dataquest.io">www.dataquest.io</a>)</h2>
+
+<h2><a href="mailto:vik.paruchuri@gmail.com">vik.paruchuri@gmail.com</a></h2>
+</div>
+      <div class='step' >
+    
+<h2>What&#39;s evolving music?</h2>
+
+<ul>
+<li>Take existing music</li>
+<li>Learn patterns from it</li>
+<li>Use the knowledge to make new music</li>
+<li>Judge your new music</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Why?</h2>
+
+<ul>
+<li>Because it&#39;s cool</li>
+<li>See above reason</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>A small confession</h2>
+
+<ul>
+<li>Only makes really ominous music</li>
+<li>Obviously what I meant to do</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>A look at midi</h2>
+
+<ul>
+<li>MIDI contains tracks</li>
+<li>Tracks from different instruments</li>
+<li>Tracks contain events</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Midi events</h2>
+<pre><code class='prettyprint '>[midi.ProgramChangeEvent(tick=0, channel=0, data=[0]),
+midi.NoteOffEvent(tick=20, channel=9, data=[42, 64]),
+midi.NoteOnEvent(tick=28, channel=9, data=[38, 90]),
+midi.NoteOnEvent(tick=0, channel=9, data=[42, 90]),
+midi.NoteOffEvent(tick=20, channel=9, data=[38, 64]),
+midi.NoteOffEvent(tick=0, channel=9, data=[42, 64]),
+midi.NoteOnEvent(tick=28, channel=9, data=[42, 70]),
+midi.NoteOffEvent(tick=20, channel=9, data=[35, 64]),
+midi.NoteOffEvent(tick=0, channel=9, data=[42, 64]),
+midi.NoteOnEvent(tick=28, channel=9, data=[42, 58]),
+midi.EndOfTrackEvent(tick=0, data=[])]
+</code></pre></div>
+      <div class='step' >
+    
+<h2>MIDI stored as byte code</h2>
+
+<p><img src="https://vik-affirm-assets.s3-us-west-1.amazonaws.com/making-instrumental-music-from-scratch/midi_bytes.png" alt="midi"></p>
+</div>
+      <div class='step' >
+    
+<h2>Python-midi to the rescue!</h2>
+
+<ul>
+<li>Parses midi into python data structures</li>
+<li>Open source</li>
+<li>Found at <a href="https://github.com/vishnubob/python-midi">https://github.com/vishnubob/python-midi</a></li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Step 1: ACQUIRE MUSIC</h2>
+
+<ul>
+<li>Use scrapy -- <a href="http://scrapy.org/">http://scrapy.org/</a></li>
+<li>Write crawlers to scrape sites</li>
+<li>Download .mid files</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Step 2: Render tracks</h2>
+
+<ul>
+<li>MIDI has to be &quot;rendered&quot;</li>
+<li>Output to .ogg files</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Step 45: Markov chain everything!</h2>
+
+<p><img src="https://vik-affirm-assets.s3-us-west-1.amazonaws.com/making-instrumental-music-from-scratch/markov-chain.png" alt="Markov chain"></p>
+</div>
+      <div class='step' >
+    
+<h2>Construct chains</h2>
+
+<ul>
+<li>Make matrices for pitch, velocity, tick per-instrument</li>
+<li>Rows and columns are numbers</li>
+<li>Cells contain # of transitions from row state to column state</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>More chains!</h2>
+
+<ul>
+<li>Make chains with a &quot;lag&quot; of 2 and 3</li>
+<li>Tried more lag, didn&#39;t help</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Note &quot;phrases&quot;</h2>
+
+<ul>
+<li>Music has structure</li>
+<li>Phrases are basic units of it</li>
+<li>I have almost no music theory experience</li>
+<li>Let me know after if I&#39;m wrong</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Extract phrases</h2>
+
+<ul>
+<li>Go through all midi files</li>
+<li>Pull out sequences of 8 notes</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Making a track</h2>
+
+<ul>
+<li>Select the instrument</li>
+<li>Randomly select a starting phrase</li>
+<li>Use markov chains to pick next phrase</li>
+<li>Repeat until specified length</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Making a song</h2>
+
+<ul>
+<li>Pick instruments that are good together</li>
+<li>Put tracks from those instruments together</li>
+<li>Add a tempo track</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Evaluating song</h2>
+
+<ul>
+<li>Render midi to ogg file</li>
+<li>Use fluidsynth, oggenc, and sox</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Look at the audio</h2>
+
+<p><img src="https://vik-affirm-assets.s3-us-west-1.amazonaws.com/making-instrumental-music-from-scratch/song_10s.png" alt="audio"></p>
+</div>
+      <div class='step' >
+    
+<h2>Read audio in</h2>
+
+<p>$$\begin{bmatrix}
+2.35185598e-05 &amp; -1.04448336e-05\\
+-3.46823663e-06 &amp; -3.73403673e-05\\
+-2.69492170e-06 &amp; -1.44758296e-05\\
+9.47549870e-06 &amp; 2.09419904e-05\\
+-2.70856035e-05 &amp; 3.44590421e-06\\
+-3.01332675e-05 &amp; 2.74870854e-05\\
+-1.44664727e-06 &amp; 7.49632018e-05\\
+-3.80197125e-05 &amp; 2.56412422e-05\\
+-5.61815832e-05 &amp; -1.29676855e-05\\
+-4.73532873e-06 &amp; 3.69851950e-05
+\end{bmatrix}$$</p>
+</div>
+      <div class='step' >
+    
+<h2>Feature calculation</h2>
+
+<ul>
+<li>Calculate a bunch of features</li>
+<li>Split song into &quot;bins&quot;</li>
+<li>Calculate zero crossing rate, mel frequency cepstrum</li>
+<li>Slope, peak count, and many more</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>End up with a matrix</h2>
+
+<ul>
+<li>154 features in all</li>
+</ul>
+
+      </div>
+    <script src="js/impress.js"></script>
+    <script>impress().init();</script>
+  </body>
+</html>
+    
