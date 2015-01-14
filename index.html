@@ -65,11 +65,10 @@
 </div>
       <div class='step' >
     
-<h2>A small confession</h2>
+<h2>Listen in</h2>
 
 <ul>
-<li>Only makes really ominous music</li>
-<li>Obviously what I meant to do</li>
+<li>Sample tracks: <a href="https://s3.amazonaws.com/presentation-files/d5bcbeeb-7bca-446a-b5dd-c85bbb2918a8.ogg">1</a> <a href="https://s3.amazonaws.com/presentation-files/7a5b8454-2e1c-4b4a-b622-966e85d713e5.ogg">2</a></li>
 </ul>
 </div>
       <div class='step' >
@@ -247,6 +246,59 @@ midi.EndOfTrackEvent(tick=0, data=[])]
 
 <ul>
 <li>154 features in all</li>
+<li>Concatenate vectors, get matrix</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Scoring songs</h2>
+
+<ul>
+<li>Compare generated song with existing songs</li>
+<li>Used random forest at one point to predict</li>
+<li>Simpler to use cosine distance</li>
+<li>Lower distance is better</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Semi-genetic algorithm</h2>
+
+<ul>
+<li>Create candidate songs</li>
+<li>Score them all</li>
+<li>Pick the best ones, and keep them</li>
+<li>Remix songs by swapping tracks</li>
+<li>Generate some new songs</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Generations</h2>
+
+<ul>
+<li>Evolve multiple generations</li>
+<li>Try to minimize distance from existing songs</li>
+<li>Algorithm finds local minimum quickly</li>
+<li>More than 3 generations gets duplicate &quot;best&quot; song</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>More songs</h2>
+
+<ul>
+<li>Samples</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Open source</h2>
+
+<ul>
+<li>Available at <a href="https://github.com/VikParuchuri/evolve-music2">https://github.com/VikParuchuri/evolve-music2</a></li>
+<li>This presentation available at: <a href="https://github.com/VikParuchuri/pydataboston2015">https://github.com/VikParuchuri/pydataboston2015</a></li>
+<li>Want to learn how to do things like this?  Check out <a href="http://www.dataquest.io">www.dataquest.io</a>!</li>
 </ul>
 
       </div>
