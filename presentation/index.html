@@ -68,22 +68,12 @@
 <h2>Listen in</h2>
 
 <ul>
-<li>Sample tracks: <a href="https://s3.amazonaws.com/presentation-files/d5bcbeeb-7bca-446a-b5dd-c85bbb2918a8.ogg">1</a> <a href="https://s3.amazonaws.com/presentation-files/7a5b8454-2e1c-4b4a-b622-966e85d713e5.ogg">2</a></li>
+<li>Sample tracks: <a href="https://s3.amazonaws.com/presentation-files/d5bcbeeb-7bca-446a-b5dd-c85bbb2918a8.ogg">1</a> <a href="https://s3.amazonaws.com/presentation-files/7a5b8454-2e1c-4b4a-b622-966e85d713e5.ogg">2</a> <a href="https://s3.amazonaws.com/presentation-files/e49d8301-3963-489f-876f-1229473b93b0.ogg">3</a></li>
 </ul>
 </div>
       <div class='step' >
     
-<h2>A look at midi</h2>
-
-<ul>
-<li>MIDI contains tracks</li>
-<li>Tracks from different instruments</li>
-<li>Tracks contain events</li>
-</ul>
-</div>
-      <div class='step' >
-    
-<h2>Midi events</h2>
+<h2>Midi format</h2>
 <pre><code class='prettyprint '>[midi.ProgramChangeEvent(tick=0, channel=0, data=[0]),
 midi.NoteOffEvent(tick=20, channel=9, data=[42, 64]),
 midi.NoteOnEvent(tick=28, channel=9, data=[38, 90]),
@@ -108,7 +98,6 @@ midi.EndOfTrackEvent(tick=0, data=[])]
 
 <ul>
 <li>Parses midi into python data structures</li>
-<li>Open source</li>
 <li>Found at <a href="https://github.com/vishnubob/python-midi">https://github.com/vishnubob/python-midi</a></li>
 </ul>
 </div>
@@ -149,15 +138,6 @@ midi.EndOfTrackEvent(tick=0, data=[])]
 </div>
       <div class='step' >
     
-<h2>More chains!</h2>
-
-<ul>
-<li>Make chains with a &quot;lag&quot; of 2 and 3</li>
-<li>Tried more lag, didn&#39;t help</li>
-</ul>
-</div>
-      <div class='step' >
-    
 <h2>Note &quot;phrases&quot;</h2>
 
 <ul>
@@ -165,14 +145,6 @@ midi.EndOfTrackEvent(tick=0, data=[])]
 <li>Phrases are basic units of it</li>
 <li>I have almost no music theory experience</li>
 <li>Let me know after if I&#39;m wrong</li>
-</ul>
-</div>
-      <div class='step' >
-    
-<h2>Extract phrases</h2>
-
-<ul>
-<li>Go through all midi files</li>
 <li>Pull out sequences of 8 notes</li>
 </ul>
 </div>
@@ -236,17 +208,9 @@ midi.EndOfTrackEvent(tick=0, data=[])]
 <ul>
 <li>Calculate a bunch of features</li>
 <li>Split song into &quot;bins&quot;</li>
-<li>Calculate zero crossing rate, mel frequency cepstrum</li>
-<li>Slope, peak count, and many more</li>
-</ul>
-</div>
-      <div class='step' >
-    
-<h2>End up with a matrix</h2>
-
-<ul>
-<li>154 features in all</li>
-<li>Concatenate vectors, get matrix</li>
+<li>ZCR, slope, peak count, and many more</li>
+<li>154 in all</li>
+<li>Put into matrix</li>
 </ul>
 </div>
       <div class='step' >
@@ -267,7 +231,7 @@ midi.EndOfTrackEvent(tick=0, data=[])]
 <ul>
 <li>Create candidate songs</li>
 <li>Score them all</li>
-<li>Pick the best ones, and keep them</li>
+<li>Pick the best ones</li>
 <li>Remix songs by swapping tracks</li>
 <li>Generate some new songs</li>
 </ul>
@@ -285,10 +249,13 @@ midi.EndOfTrackEvent(tick=0, data=[])]
 </div>
       <div class='step' >
     
-<h2>More songs</h2>
+<h2>Ways to make it better</h2>
 
 <ul>
-<li>Samples</li>
+<li>Hand-label some songs, and use them for supervised learning</li>
+<li>Get more training data</li>
+<li>Generate better features</li>
+<li>Do more in the genetic algorithm than just remix</li>
 </ul>
 </div>
       <div class='step' >

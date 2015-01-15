@@ -24,17 +24,10 @@ title: Evolving your own music
 ---
 ## Listen in
 
-* Sample tracks: [1](https://s3.amazonaws.com/presentation-files/d5bcbeeb-7bca-446a-b5dd-c85bbb2918a8.ogg) [2](https://s3.amazonaws.com/presentation-files/7a5b8454-2e1c-4b4a-b622-966e85d713e5.ogg)
+* Sample tracks: [1](https://s3.amazonaws.com/presentation-files/d5bcbeeb-7bca-446a-b5dd-c85bbb2918a8.ogg) [2](https://s3.amazonaws.com/presentation-files/7a5b8454-2e1c-4b4a-b622-966e85d713e5.ogg) [3](https://s3.amazonaws.com/presentation-files/e49d8301-3963-489f-876f-1229473b93b0.ogg)
 
 ---
-## A look at midi
-
-* MIDI contains tracks
-* Tracks from different instruments
-* Tracks contain events
-
----
-## Midi events
+## Midi format
 
     [midi.ProgramChangeEvent(tick=0, channel=0, data=[0]),
     midi.NoteOffEvent(tick=20, channel=9, data=[42, 64]),
@@ -57,7 +50,6 @@ title: Evolving your own music
 ## Python-midi to the rescue!
 
 * Parses midi into python data structures
-* Open source
 * Found at https://github.com/vishnubob/python-midi
 
 ---
@@ -86,23 +78,12 @@ title: Evolving your own music
 * Cells contain # of transitions from row state to column state
 
 ---
-## More chains!
-
-* Make chains with a "lag" of 2 and 3
-* Tried more lag, didn't help
-
----
 ## Note "phrases"
 
 * Music has structure
 * Phrases are basic units of it
 * I have almost no music theory experience
 * Let me know after if I'm wrong
-
----
-## Extract phrases
-
-* Go through all midi files
 * Pull out sequences of 8 notes
 
 ---
@@ -152,14 +133,9 @@ $$\begin{bmatrix}
 
 * Calculate a bunch of features
 * Split song into "bins"
-* Calculate zero crossing rate, mel frequency cepstrum
-* Slope, peak count, and many more
-
----
-## End up with a matrix
-
-* 154 features in all
-* Concatenate vectors, get matrix
+* ZCR, slope, peak count, and many more
+* 154 in all
+* Put into matrix
 
 ---
 ## Scoring songs
@@ -174,7 +150,7 @@ $$\begin{bmatrix}
 
 * Create candidate songs
 * Score them all
-* Pick the best ones, and keep them
+* Pick the best ones
 * Remix songs by swapping tracks
 * Generate some new songs
 
@@ -187,9 +163,12 @@ $$\begin{bmatrix}
 * More than 3 generations gets duplicate "best" song
 
 ---
-## More songs
+## Ways to make it better
 
-* Samples
+* Hand-label some songs, and use them for supervised learning
+* Get more training data
+* Generate better features
+* Do more in the genetic algorithm than just remix
 
 ---
 ## Open source
